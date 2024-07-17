@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ACCESS_KEY = "_AWSqd6Exv2zoasus1RSNaiBmaFPbMmwdpzT3zCez0";
+const ACCESS_KEY = "_AWSqd6Exv2zosauslRSNaiBmAFpbMmmvdpZT3zCez0";
 
 export const fetchImages = async (query, page = 1) => {
   const response = await axios.get(`https://api.unsplash.com/search/photos`, {
