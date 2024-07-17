@@ -1,9 +1,13 @@
 import axios from "axios";
 
-export const fetchNews = async (query) => {
-  const response = await axios
-    .get
-    `https://api.unsplash.com//v1/search?query=${query}&hitsPerPage=12`
-    ();
+const ACCESS_KEY = "_AWSqd6Exv2zoasus1RSNaiBmaFPbMmwdpzT3zCez0";
+
+export const fetchImages = async (query, page = 1) => {
+  const response = await axios.get(`https://api.unsplash.com/search/photos`, {
+    params: { query, page, per_page: 12 },
+    headers: {
+      Authorization: `Client-ID ${ACCESS_KEY}`,
+    },
+  });
   return response.data;
 };
