@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SearchBar from "./components/SearchBar/SearchBar";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
-import Loader from "./components/Loader/Loader";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
-import ImageModal from "./components/ImageModal/ImageModal";
+import SearchBar from "./SearchBar/SearchBar";
+import ImageGallery from "./ImageGallery/ImageGallery";
+import Loader from "./Loader/Loader";
+import ErrorMessage from "./ErrorMessage/ErrorMessage";
+import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./ImageModal/ImageModal";
 import toast, { Toaster } from "react-hot-toast";
-import s from "../index.css";
+import { fetchNews } from "../services/api.js";
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -25,19 +25,8 @@ const App = () => {
       setError(null);
 
       try {
-        const response = await axios.get(
-          "https://api.unsplash.com/search/photos",
-          {
-            params: {
-              query,
-              page,
-              per_page: 12,
-            },
-            headers: {
-              Authorization: "Client-ID YOUR_ACCESS_KEY",
-            },
-          }
-        );
+      const response = await fetchNews('');
+     
         if (response.data.results.length === 0) {
           toast.error("No images found");
         }
