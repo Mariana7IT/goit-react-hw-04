@@ -4,6 +4,7 @@
   margin-bottom: 20px;
   width: 100%;
 }
+
 .form {
   display: flex;
   align-items: center;
@@ -16,8 +17,8 @@
   border-radius: 4px;
   font-size: 18px; 
   margin-right: 10px;
-   background-color: #ccc;
-   font-size: 26px;
+  background-color: #ccc;
+  font-size: 26px;
 }
 
 .button {

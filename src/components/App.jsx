@@ -8,6 +8,7 @@ import ImageModal from "../components/ImageModal/ImageModal";
 import { fetchImages } from "../services/api";
 import toast, { Toaster } from "react-hot-toast";
 
+
 const App = () => {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState("");

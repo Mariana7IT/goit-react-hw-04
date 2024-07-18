@@ -17,20 +17,21 @@
 
 
 body {
-  padding: 20px 30px;
-  display: flex;
-  justify-content: start;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: var(--montserrat), sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
   margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
+  padding: 20px 20px;
+  
 }
 div {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  
 }
 
 h1 {
@@ -44,7 +45,11 @@ h1 {
   line-height: 1.5;
 }
 
-
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 button:hover {
   border-color: #646cff;
 }
@@ -70,6 +75,9 @@ ol {
   padding: 0;
   list-style: none;
 }
+
+
+
 
 
 
