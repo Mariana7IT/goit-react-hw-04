@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
-import LoadMoreLoader from "../components/Loader/Loader"; 
+import Loader from "../components/Loader/Loader";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import LoadMoreLoader from "../components/Loader/Loader";
 import ImageModal from "../components/ImageModal/ImageModal";
 import { fetchImages } from "../services/api";
 import toast, { Toaster } from "react-hot-toast";
@@ -59,7 +60,10 @@ const App = () => {
       <SearchBar onSubmit={handleSearch} />
       {error && <ErrorMessage message={error.message} />}
       <ImageGallery images={images} onImageClick={openModal} />
-      <LoadMoreLoader onClick={loadMore} isLoading={isLoading} />{" "}
+      {isLoading && <Loader />}
+      {images.length > 0 && !isLoading && (
+        <LoadMoreLoader onClick={loadMore} isLoading={isLoading} />
+      )}
       {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
       <Toaster />
     </div>
