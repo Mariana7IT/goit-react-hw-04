@@ -16,6 +16,7 @@ const App = () => {
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [totalImages, setTotalImages] = useState(0);
 
   useEffect(() => {
     if (!query) return;
@@ -25,6 +26,7 @@ const App = () => {
       try {
         const data = await fetchImages(query, page);
         setImages((prevImages) => [...prevImages, ...data.results]);
+        setTotalImages(data.total); // Set total images
       } catch (error) {
         setError(error);
       } finally {
@@ -39,6 +41,7 @@ const App = () => {
     setQuery(newQuery);
     setPage(1);
     setImages([]);
+    setTotalImages(0);
   };
 
   const loadMore = () => {
@@ -61,7 +64,7 @@ const App = () => {
       {error && <ErrorMessage message={error.message} />}
       <ImageGallery images={images} onImageClick={openModal} />
       {isLoading && <Loader />}
-      {images.length > 0 && !isLoading && (
+      {images.length > 0 && images.length < totalImages && !isLoading && (
         <LoadMoreLoader onClick={loadMore} isLoading={isLoading} />
       )}
       {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
