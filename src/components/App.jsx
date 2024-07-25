@@ -61,12 +61,17 @@ const App = () => {
 
   return (
     <div>
-      <SearchBar onSubmit={handleSearch} />
-      {error && <ErrorMessage message={error.message} />}
-      <ImageGallery images={images} onImageClick={openModal} />
-      {isLoading && <Loader onClick={loadMore} isLoading={isLoading} />}
-      {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
-      <Toaster />
+      <div>
+        <SearchBar onSubmit={handleSearch} />
+        {error && <ErrorMessage message={error.message} />}
+        <ImageGallery images={images} onImageClick={openModal} />
+        {images.length > 0 && !isLoading && totalImages > images.length && (
+          <LoadMoreBtn onClick={loadMore} />
+        )}
+        {isLoading && <LoadMoreBtn onClick={loadMore} isLoading={isLoading} />}
+        {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
+        <Toaster />
+      </div>
     </div>
   );
 };
