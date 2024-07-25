@@ -8,6 +8,7 @@ import ImageModal from "../components/ImageModal/ImageModal";
 import { fetchImages } from "../services/api";
 import toast, { Toaster } from "react-hot-toast";
 
+
 const App = () => {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState("");
@@ -63,10 +64,7 @@ const App = () => {
       <SearchBar onSubmit={handleSearch} />
       {error && <ErrorMessage message={error.message} />}
       <ImageGallery images={images} onImageClick={openModal} />
-      {isLoading && <Loader />}
-      {images.length > 0 && images.length < totalImages && !isLoading && (
-        <LoadMoreBtn onClick={loadMore} />
-      )}
+      {isLoading && <LoadMoreLoader onClick={loadMore} isLoading={isLoading} />}
       {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
       <Toaster />
     </div>
@@ -74,5 +72,5 @@ const App = () => {
 };
 
 
-
-export default App;
+ 
+ export default App;
