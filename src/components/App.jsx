@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
 import Loader from "../components/Loader/Loader";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
-import LoadMoreLoader from "../components/Loader/Loader";
+import LoadMoreBtn from "../components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../components/ImageModal/ImageModal";
 import { fetchImages } from "../services/api";
 import toast, { Toaster } from "react-hot-toast";
@@ -26,7 +26,7 @@ const App = () => {
       try {
         const data = await fetchImages(query, page);
         setImages((prevImages) => [...prevImages, ...data.results]);
-        setTotalImages(data.total); // Set total images
+        setTotalImages(data.total);
       } catch (error) {
         setError(error);
       } finally {
@@ -65,12 +65,14 @@ const App = () => {
       <ImageGallery images={images} onImageClick={openModal} />
       {isLoading && <Loader />}
       {images.length > 0 && images.length < totalImages && !isLoading && (
-        <LoadMoreLoader onClick={loadMore} isLoading={isLoading} />
+        <LoadMoreBtn onClick={loadMore} />
       )}
       {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
       <Toaster />
     </div>
   );
 };
+
+
 
 export default App;
