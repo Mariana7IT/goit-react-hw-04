@@ -68,7 +68,7 @@ const App = () => {
         {images.length > 0 && !isLoading && totalImages > images.length && (
           <LoadMoreBtn onClick={loadMore} />
         )}
-        {isLoading && <LoadMoreBtn onClick={loadMore} isLoading={isLoading} />}
+        {isLoading && <Loader onClick={loadMore} isLoading={isLoading} />}
         {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
         <Toaster />
       </div>
