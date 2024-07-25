@@ -64,7 +64,7 @@ const App = () => {
       <SearchBar onSubmit={handleSearch} />
       {error && <ErrorMessage message={error.message} />}
       <ImageGallery images={images} onImageClick={openModal} />
-      {isLoading && <LoadMoreLoader onClick={loadMore} isLoading={isLoading} />}
+      {isLoading && <Loader onClick={loadMore} isLoading={isLoading} />}
       {showModal && <ImageModal image={selectedImage} onClose={closeModal} />}
       <Toaster />
     </div>
@@ -72,5 +72,4 @@ const App = () => {
 };
 
 
- 
  export default App;
